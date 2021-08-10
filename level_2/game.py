@@ -1,7 +1,4 @@
-'''
-Tehila Naki-323071571
-Merav Izhaki-322915430
-'''
+
 
 import copy
 
