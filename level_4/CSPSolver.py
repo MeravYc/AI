@@ -1,7 +1,4 @@
-'''
-Tehila Naki-323071571
-Merav Berkowitz (Izhaki)-322915430
-'''
+
 
 import math
 import CSProblem
