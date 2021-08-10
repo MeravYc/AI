@@ -5,10 +5,7 @@ The target for 8-puzzle is: (zero is the hole)
 345
 678
 '''
-'''
-Tehila Naki-323071571
-Merav Izhaki-322915430
-'''
+
 
 import random
 import math
@@ -84,13 +81,15 @@ def hdistance(s):
 השיפור הושג מפני שביוריסטיקה הקודמת אין התחשבות בכמות ההזזות שצריך לעשות עבור כל מספר שממוקם נכון,
 ונסכם רק כמות המספרים שאינם במקומם וזה פחות מדוייק ותואם את ההזזות באמת.
 '''
-def hdistance(s):#Heuristic function according to Manhattan distances
-    c=0
-    for i in range(0,len(s[0])):
-        x=abs((s[0])[i]-i)#distance between the right place
-        c += x % 3  # the moves left/right
-        if x>3:
-            x/=3 # if it more than 3 go down/up
-        c+=math.floor(x)
-        if ((s[0])[i]==6 and i==5) or ((s[0])[i]==3 and i==2): c+=2 #if is the numbers in the corner, it need more 2 steps to go next place/index
-    return c
+def hdistance(s):          #Heuristic function according to Manhattan distances
+    n = int(len(s[0])**0.5)
+    distance = 0
+    for i in range(n**2):
+        target_row = i // n
+        target_col = i % n
+
+        row = s[0][i] // n
+        col = s[0][i] % n
+
+        distance += abs(target_row - row) + abs(target_col - col) # calculates the differences between the rows and the columns
+    return distance
